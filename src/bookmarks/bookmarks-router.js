@@ -14,7 +14,6 @@ bookmarksRouter
   })
   .post(bodyParser, (req, res) => {
     const { title, url, description, rating } = req.body;
-
     if (!title || title.length < 1) {
       logger.error(`Title is required`);
       return res
@@ -28,7 +27,7 @@ bookmarksRouter
         .send('Invalid data');
     }
     if (!description || description.length < 3) {
-      logger.error(`description is required(atleast 3 chars)`);
+      logger.error(`description is required(at least 3 characters)`);
       return res
         .status(400)
         .send('Invalid data');
@@ -40,9 +39,10 @@ bookmarksRouter
         .send('Invalid data');
     }
 
-    //const id = uuid();
+    const id = uuid();
+
     let newBookmark = {
-      id: uuid(),
+      id,
       title,
       url,
       description,

@@ -20,11 +20,11 @@ describe('App', () => {
   });
 
   it('GET /bookmarks/:id return a single bookmark with the given id', () => {
-    const id = 1;
+    const id = "1";
 
     return supertest(app)
       .get(`/bookmarks/${id}`)
       .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
-      .expect(200, bookmarks);
+      .expect(200, bookmarks.filter(bookmark => bookmark.id === id)[0] );
   });
 })
